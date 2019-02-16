@@ -1,4 +1,4 @@
-# Navigation Architecture Component
+# Navigation
 The Navigation Architecture Component helps you implement common, but complex navigation requirements in your app, enabling you to more easily provide consistent and predictable experiences for your users.
 
 Navigation handles navigating between your app's destinations--that is, anywhere in your app to which users can navigate. While destinations are usually Fragments representing specific screens, the Navigation Architecture Component supports the other destination types listed below:
