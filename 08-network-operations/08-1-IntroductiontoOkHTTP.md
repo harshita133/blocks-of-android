@@ -12,7 +12,7 @@ OkHttp is a third party library that is used for sending and receing HTTP-based 
 ## Setup
 
 Firstly, ask for Internet permission in the Manifest file
-```
+``` gradle
 <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
@@ -26,7 +26,7 @@ dependencies {
 
 First of all, instantiate an OkHttp client and create a request object
 
-```
+``` kotlin
 val client = OkHttpClient()
 
 val request = Request.Builder()
@@ -36,7 +36,7 @@ val request = Request.Builder()
 
 You can also add query parameters:
 
-```
+``` kotlin
  val urlBuilder = HttpUrl.parse("https://api.github.com").newBuilder()
  urlBuilder.addQueryParameter("v", "1.0")
  urlBuilder.addQueryParameter("user", username)
@@ -51,7 +51,7 @@ The next step is to get the response from the server, this can be in asynchronus
  ### Synchronous call
  
 The synchronous call to the network is made with the help of a an asyn task because android does not allow making network calls on the main thread. However, this is not the preferred way of doing the task because it leaks the context of the activity and also cancelling of requests is not suppported.
- ```
+ ``` kotlin
  val response = client.newCall(request).execute()
  ```
  
@@ -61,7 +61,7 @@ This is the preferred way of asking calls to the network as it allows making mul
 
 The point to be noted here is that the call is made via some other thread and the same thread is used to handle the response that is received. However, android does not allow any changes to be made to the UI of the application from any other thread except the main thread. Therefore, in order to publish the response of the newtwork call or to do any other change with the UI of the thread, use runOnUiThread method as shown in the snippet below:  
 
-```
+``` kotlin
 fun makeNetworkCall(url: String) {
         val client = OkHttpClient()
         val request = Request.Builder().url(url).build()
